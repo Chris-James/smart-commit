@@ -1,0 +1,270 @@
+"format cjs";
+
+var wrap = require('word-wrap');
+var Log = require('log');
+var editor = require('editor');
+var temp = require('temp').track();
+var fs = require('fs');
+
+var log = new Log('info');
+
+// This can be any kind of SystemJS compatible module.
+// We use Commonjs here, but ES6 or AMD would do just fine.
+
+module.exports = {
+
+  // When a user runs `git cz`, prompter will be executed.
+  // We pass you cz, which is currently just an instance of inquirer.js.
+  // Using this you can ask questions and get answers.
+
+  // Execute the commit callback when you're ready to send
+  // a commit template back to git.
+
+  // By default, we'll de-indent your commit template & will keep empty lines.
+  prompter: function(cz, commit) {
+
+    // Ask some questions of the user so we can populate our commit template.
+    // See inquirer.js docs for specifics.
+    cz.prompt([
+      {
+        type: 'list',
+        name: 'type',
+        message: 'Select the type of change that you\'re committing:',
+        choices: [
+        {
+          name: 'FEAT:     A new feature',
+          value: 'FEAT'
+        }, {
+          name: 'FIX:      A bug fix',
+          value: 'FIX'
+        }, {
+          name: 'DOCS:     Changes to documentation only.',
+          value: 'DOCS'
+        }, {
+          name: 'STYLE:    Changes that do not affect the meaning of the code\n            (white-space, formatting, missing semi-colons, etc)',
+          value: 'STYLE'
+        }, {
+          name: 'REFACTOR: A code change that neither fixes a bug or adds a feature',
+          value: 'REFACT'
+        }, {
+          name: 'PERF:     A code change that improves performance',
+          value: 'PERF'
+        }, {
+          name: 'TEST:     Adding missing tests',
+          value: 'TEST'
+        }, {
+          name: 'REMOVE:   Remove file(s), function(s), etc from the codebase',
+          value: 'REM'
+        }]
+      }, {
+        type: 'input',
+        name: 'scope',
+        message: 'Denote the location of this change: ',
+        when: function(answerObj) {
+          return answerObj.type !== 'REM';
+        },
+        filter: function(scope) {
+          return scope.trim();
+        }
+      }, {
+        type: 'input',
+        name: 'target',
+        message: 'What are you removing?',
+        when: function(answerObj) {
+          return answerObj.type === 'REM';
+        },
+        validate: function(target) {
+          var answers = arguments[1];
+          return validateLength(target, answers);
+        },
+        filter: function(target) {
+          return target.trim();
+        }
+      }, {
+        type: 'input',
+        name: 'subject',
+        message: 'Write a short, imperative tense description of the change: ',
+        when: function(answerObj) {
+          return answerObj.type !== 'REM';
+        },
+        validate: function(subject) {
+          var answers = arguments[1];
+          return validateLength(subject, answers);
+        },
+        filter: function(subject) {
+          return subject.trim();
+        }
+      }, {
+        type: 'input',
+        name: 'body',
+        message: 'Provide a longer description of the change. Use "|" to add a line break.\n',
+        filter: function(body) {
+          return body.trim();
+        }
+      }, {
+        type: 'confirm',
+        name: 'pair',
+        message: 'Did you pair with anyone?',
+        when: function(answerObj) {
+          return answerObj.type !== 'REM';
+        }
+      }, {
+        type: 'input',
+        name: 'driver',
+        message: 'Driver: ',
+        when: function(answerObj) {
+          return !!answerObj.pair;
+        },
+        filter: function(driver) {
+          return driver.trim();
+        }
+      }, {
+        type: 'input',
+        name: 'navs',
+        message: 'Navigator(s): ',
+        when: function(answerObj) {
+          return !!answerObj.pair;
+        },
+        filter: function(navigators) {
+          return navigators.trim();
+        }
+      }, {
+        type: 'list',
+        name: 'confirm',
+        message: function(answerObj) {
+          var commitMessage = buildCommitMessage(answerObj);
+
+          return 'Here is your commit message:\n\n' + commitMessage + '\n\n' + 'How would you like to proceed?';
+        },
+        choices: [
+          { name: 'Commit', value: 'commit'},
+          { name: 'Edit Message', value: 'edit'},
+          { name: 'Cancel Commit', value: 'cancel'}
+        ]
+      }
+    ], function(answers) {
+
+      var commitMessage = buildCommitMessage(answers);
+
+      switch(answers.confirm) {
+        case 'commit':
+          commit(commitMessage);
+          break;
+        case 'cancel':
+          log.warning('Commit cancelled.');
+          break;
+        case 'edit':
+          temp.open(null, function(err, info) {
+            var error = !!err;
+            if (!error) {
+              fs.write(info.fd, commitMessage);
+              fs.close(info.fd, function(err) {
+                editor(info.path, function (code, sig) {
+                  var success = 0;
+                  if (code === success) {
+                    var newCommitMessage = fs.readFileSync(info.path, { encoding: 'utf8' });
+                    commit(newCommitMessage);
+                  } else {
+                    log.info('Editor returned error. Commit message was:\n' + commitMessage);
+                  }
+                });
+              });
+            }
+          });
+          break;
+        default:
+          break;
+      }
+    });
+  }
+}
+
+function buildBody(bodyInput) {
+
+  var bodyStatements;
+  var body = '';
+
+  var wrapOptions = {
+    trim: true,
+    newline: '\n',
+    indent:'',
+    width: 72
+  };
+
+  // Split the body into discrete chunks
+  bodyStatements = bodyInput.split('|');
+
+  bodyStatements.forEach(function(item) {
+
+    // Wrap then concatenate each chunk
+    body += wrap(item, wrapOptions);
+    body += '\n';
+
+  });
+
+  return body;
+
+}
+
+function buildCommitMessage(answers) {
+
+  var type = answers.type;
+  var scope = answers.scope;
+  var subject = answers.subject || '';
+  var target = answers.target || '';
+  var body = answers.body || '';
+  var delimiter = ': ';
+  var head;
+  var commitMessage;
+
+  // Format header
+  scope = (!!scope) ? '(' + scope + ')' : '';
+  head = (type + scope + delimiter + subject + target);
+
+  // Format commit
+  commitMessage = head;
+
+  if (!!body) {
+    commitMessage += '\n';
+    commitMessage += '\n';
+    commitMessage += buildBody(body);
+  }
+
+  if (!!answers.pair) {
+    commitMessage += '\n';
+    commitMessage += 'Driver: ' + answers.driver;
+    commitMessage += '\n';
+    commitMessage += 'Navigator(s): ' + answers.navs;
+  }
+
+  return commitMessage;
+}
+
+function validateLength(input, answerObj) {
+
+  var overflow = calculateOverflow(input, answerObj);
+
+  return (!!overflow) ? lengthError(overflow) : true;
+}
+
+function calculateOverflow(input, answerObj) {
+
+  var GITHUB_HEADER_LIMIT = 69;
+  var inputLen = input.length;
+  var typeLen = answerObj.type.length;
+
+  // Remember +2 for the parentheses
+  var scopeLen = !!answerObj.scope ? answerObj.scope.length + 2 : 0;
+
+  // Remember to count ": "
+  var delimiterLen = 2;
+
+  var charsRemaining = (GITHUB_HEADER_LIMIT - (typeLen + scopeLen + delimiterLen));
+
+  return (inputLen > charsRemaining) ? (inputLen - charsRemaining) : '';
+}
+
+function lengthError(charOverflow) {
+  var plural = (charOverflow > 1) ? '(s)' : '' ;
+  return 'Message was ' + charOverflow + ' character' + plural + ' too long.';
+}
