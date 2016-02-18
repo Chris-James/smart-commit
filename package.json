@@ -1,5 +1,5 @@
 {
-  "name": "smart-commit",
+  "name": "@chrisjames/smart-commit",
   "version": "1.0.0",
   "description": "Commitizen adapter for easy, sensible Git commit messages.",
   "main": "index.js",
