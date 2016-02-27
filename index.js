@@ -32,29 +32,29 @@ module.exports = {
         message: 'Select the type of change that you\'re committing:',
         choices: [
         {
-          name: 'FEAT:     A new feature',
-          value: 'FEAT'
+          name: 'feat:     A new feature',
+          value: 'feat'
         }, {
-          name: 'FIX:      A bug fix',
-          value: 'FIX'
+          name: 'fix:      A bug fix',
+          value: 'fix'
         }, {
-          name: 'DOCS:     Changes to documentation only.',
-          value: 'DOCS'
+          name: 'docs:     Changes to documentation only.',
+          value: 'docs'
         }, {
-          name: 'STYLE:    Changes that do not affect the meaning of the code\n            (white-space, formatting, missing semi-colons, etc)',
-          value: 'STYLE'
+          name: 'style:    Changes that do not affect the meaning of the code\n            (white-space, formatting, missing semi-colons, etc)',
+          value: 'style'
         }, {
-          name: 'REFACTOR: A code change that neither fixes a bug or adds a feature',
-          value: 'REFACT'
+          name: 'refactor: A code change that neither fixes a bug or adds a feature',
+          value: 'ref'
         }, {
-          name: 'PERF:     A code change that improves performance',
-          value: 'PERF'
+          name: 'perf:     A code change that improves performance',
+          value: 'perf'
         }, {
-          name: 'TEST:     Adding missing tests',
-          value: 'TEST'
+          name: 'test:     Adding missing tests',
+          value: 'test'
         }, {
-          name: 'REMOVE:   Remove file(s), function(s), etc from the codebase',
-          value: 'REM'
+          name: 'remove:   Remove file(s), function(s), etc from the codebase',
+          value: 'rem'
         }]
       }, {
         type: 'input',
