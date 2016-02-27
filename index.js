@@ -61,7 +61,7 @@ module.exports = {
         name: 'scope',
         message: 'Denote the location of this change: ',
         when: function(answerObj) {
-          return answerObj.type !== 'REM';
+          return answerObj.type !== 'rem';
         },
         filter: function(scope) {
           return scope.trim();
@@ -71,7 +71,7 @@ module.exports = {
         name: 'target',
         message: 'What are you removing?',
         when: function(answerObj) {
-          return answerObj.type === 'REM';
+          return answerObj.type === 'rem';
         },
         validate: function(target) {
           var answers = arguments[1];
@@ -85,7 +85,7 @@ module.exports = {
         name: 'subject',
         message: 'Write a short, imperative tense description of the change: ',
         when: function(answerObj) {
-          return answerObj.type !== 'REM';
+          return answerObj.type !== 'rem';
         },
         validate: function(subject) {
           var answers = arguments[1];
@@ -106,7 +106,7 @@ module.exports = {
         name: 'pair',
         message: 'Did you pair with anyone?',
         when: function(answerObj) {
-          return answerObj.type !== 'REM';
+          return answerObj.type !== 'rem';
         }
       }, {
         type: 'input',
