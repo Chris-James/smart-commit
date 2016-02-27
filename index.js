@@ -12,7 +12,7 @@ var log = new Log('info');
 // We use Commonjs here, but ES6 or AMD would do just fine.
 
 module.exports = {
-
+  trim: trim,
   // When a user runs `git cz`, prompter will be executed.
   // We pass you cz, which is currently just an instance of inquirer.js.
   // Using this you can ask questions and get answers.
@@ -64,7 +64,7 @@ module.exports = {
           return answerObj.type !== 'rem';
         },
         filter: function(scope) {
-          return scope.trim();
+          return trim(scope);
         }
       }, {
         type: 'input',
@@ -78,7 +78,7 @@ module.exports = {
           return validateLength(target, answers);
         },
         filter: function(target) {
-          return target.trim();
+          return trim(target);
         }
       }, {
         type: 'input',
@@ -92,14 +92,14 @@ module.exports = {
           return validateLength(subject, answers);
         },
         filter: function(subject) {
-          return subject.trim();
+          return trim(subject);
         }
       }, {
         type: 'input',
         name: 'body',
         message: 'Provide a longer description of the change. Use "|" to add a line break.\n',
         filter: function(body) {
-          return body.trim();
+          return trim(body);
         }
       }, {
         type: 'confirm',
@@ -116,7 +116,7 @@ module.exports = {
           return !!answerObj.pair;
         },
         filter: function(driver) {
-          return driver.trim();
+          return trim(driver);
         }
       }, {
         type: 'input',
@@ -125,8 +125,8 @@ module.exports = {
         when: function(answerObj) {
           return !!answerObj.pair;
         },
-        filter: function(navigators) {
-          return navigators.trim();
+        filter: function(navs) {
+          return trim(navs);
         }
       }, {
         type: 'list',
@@ -267,4 +267,8 @@ function calculateOverflow(input, answerObj) {
 function lengthError(charOverflow) {
   var plural = (charOverflow > 1) ? '(s)' : '' ;
   return 'Message was ' + charOverflow + ' character' + plural + ' too long.';
+}
+
+function trim(input) {
+  return input.trim();
 }
