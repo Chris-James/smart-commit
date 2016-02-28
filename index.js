@@ -203,7 +203,8 @@ function buildBody(bodyInput) {
 
   });
 
-  return body;
+  // Remove trailing '\n'
+  return body.slice(0,-1);
 
 }
 
