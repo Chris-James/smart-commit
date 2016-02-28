@@ -269,12 +269,13 @@ function buildCommitMessage(answers) {
     commitMessage += buildBody(body);
   }
 
-  if (!!answers.pair) {
+  // Format commit footer
+  if (!!pair) {
     commitMessage += '\n';
     commitMessage += '\n';
-    commitMessage += 'Driver: ' + answers.driver;
+    commitMessage += 'Driver: ' + driver;
     commitMessage += '\n';
-    commitMessage += 'Navigator(s): ' + answers.navs;
+    commitMessage += 'Navigator(s): ' + navs;
   }
 
   if (!!close) {
