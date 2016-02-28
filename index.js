@@ -216,6 +216,10 @@ function buildBody(input) {
 
 function buildCommitMessage(answers) {
 
+  /* Returns properly formatted commit mesage.
+   * @param {Object} answers
+   * @return {String} commitMessage */
+
   var type = answers.type;
   var scope = answers.scope;
   var subject = answers.subject || '';
