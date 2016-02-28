@@ -266,6 +266,7 @@ function buildCommitMessage(answers) {
 
   if (!!answers.pair) {
     commitMessage += '\n';
+    commitMessage += '\n';
     commitMessage += 'Driver: ' + answers.driver;
     commitMessage += '\n';
     commitMessage += 'Navigator(s): ' + answers.navs;
