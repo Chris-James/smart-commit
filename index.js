@@ -13,6 +13,7 @@ var log = new Log('info');
 
 module.exports = {
   trim: trim,
+  buildBody: buildBody,
   // When a user runs `git cz`, prompter will be executed.
   // We pass you cz, which is currently just an instance of inquirer.js.
   // Using this you can ask questions and get answers.
