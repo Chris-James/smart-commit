@@ -282,5 +282,11 @@ function lengthError(charOverflow) {
 }
 
 function trim(input) {
+
+  /* Removes leading and trailing whitespace from input.
+   * @param {String} input
+   * @return {String} input */
+
   return input.trim();
+
 }
