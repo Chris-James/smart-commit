@@ -237,14 +237,19 @@ function buildCommitMessage(answers) {
    * @param {Object} answers
    * @return {String} commitMessage */
 
+  // Header Vars
   var type = answers.type;
   var scope = answers.scope;
   var subject = answers.subject || '';
   var target = answers.target || '';
-  var body = answers.body;
   var delimiter = ': ';
 
+  var body = answers.body;
+
   // Footer Vars
+  var pair = answers.pair;
+  var driver = answers.driver;
+  var navs = answers.navs;
   var close = answers.close;
   var issueNum = answers.issue;
 
