@@ -56,6 +56,9 @@ module.exports = {
         }, {
           name: 'remove:   Remove file(s), function(s), etc from the codebase',
           value: 'rem'
+        }, {
+          name: 'chore:    Change to the build process, auxiliary tools, libraries, etc',
+          value: 'chore'
         }]
       }, {
         type: 'input',
