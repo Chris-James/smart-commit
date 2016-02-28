@@ -182,7 +182,8 @@ module.exports = {
 
 function buildBody(bodyInput) {
 
-  var bodyStatements;
+  // Default to empty string in case of undefined input
+  var bodyInput = input || '';
   var body = '';
 
   var wrapOptions = {
@@ -214,7 +215,7 @@ function buildCommitMessage(answers) {
   var scope = answers.scope;
   var subject = answers.subject || '';
   var target = answers.target || '';
-  var body = answers.body || '';
+  var body = answers.body;
   var delimiter = ': ';
   var head;
   var commitMessage;
