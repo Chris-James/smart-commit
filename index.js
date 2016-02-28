@@ -243,6 +243,11 @@ function buildCommitMessage(answers) {
   var target = answers.target || '';
   var body = answers.body;
   var delimiter = ': ';
+
+  // Footer Vars
+  var close = answers.close;
+  var issueNum = answers.issue;
+
   var head;
   var commitMessage;
 
@@ -264,6 +269,12 @@ function buildCommitMessage(answers) {
     commitMessage += 'Driver: ' + answers.driver;
     commitMessage += '\n';
     commitMessage += 'Navigator(s): ' + answers.navs;
+  }
+
+  if (!!close) {
+    commitMessage += '\n';
+    commitMessage += '\n';
+    commitMessage += 'Closes: ' + issueNum;
   }
 
   return commitMessage;
