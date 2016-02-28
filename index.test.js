@@ -5,3 +5,8 @@ test('trim()', function(t) {
   t.true(index.trim('test     ') === 'test', 'removes trailing whitespace');
   t.true(index.trim('     test') === 'test', 'removes leading whitespace');
 });
+
+test('buildBody()', function(t) {
+  t.is(index.buildBody('This is a newline||test.'), 'This is a newline\n\ntest.', 'replaces \'|\' with \'\\n\'');
+  t.is(index.buildBody(undefined), '', 'handles undefined');
+});
