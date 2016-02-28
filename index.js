@@ -180,10 +180,11 @@ module.exports = {
   }
 }
 
-function buildBody(bodyInput) {
+function buildBody(input) {
 
   // Default to empty string in case of undefined input
   var bodyInput = input || '';
+  var statements;
   var body = '';
 
   var wrapOptions = {
@@ -194,9 +195,9 @@ function buildBody(bodyInput) {
   };
 
   // Split the body into discrete chunks
-  bodyStatements = bodyInput.split('|');
+  statements = bodyInput.split('|');
 
-  bodyStatements.forEach(function(item) {
+  statements.forEach(function(item) {
 
     // Wrap then concatenate each chunk
     body += wrap(item, wrapOptions);
