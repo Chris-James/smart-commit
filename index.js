@@ -107,6 +107,20 @@ module.exports = {
         }
       }, {
         type: 'confirm',
+        name: 'close',
+        message: 'Does this commit close an issue?',
+      }, {
+        type: 'input',
+        name: 'issue',
+        message: 'Closes Issue #: ',
+        when: function(answerObj) {
+          return (!!answerObj.close)
+        },
+        filter: function(issue) {
+          return trim(issue);
+        }
+      }, {
+        type: 'confirm',
         name: 'pair',
         message: 'Did you pair with anyone?',
         when: function(answerObj) {
