@@ -182,6 +182,10 @@ module.exports = {
 
 function buildBody(input) {
 
+  /* Returns properly formatted body for commit message.
+   * @param {String} input
+   * @return {String} body */
+
   // Default to empty string in case of undefined input
   var bodyInput = input || '';
   var statements;
