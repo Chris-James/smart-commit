@@ -290,6 +290,14 @@ function buildCommitMessage(answers) {
 
 function validateLength(input, answerObj) {
 
+  /**
+   * Uses calculateOverflow() to determine if length of input is <= 69.
+   * If length of input string <= 69 characters, returns true.
+   * Else, returns error message created by lengthError().
+   * @param {String} input
+   * @returns {String | Boolean} error message or true
+  **/
+
   var overflow = calculateOverflow(input, answerObj);
 
   return (!!overflow) ? lengthError(overflow) : true;
