@@ -39,19 +39,19 @@ module.exports = {
           name: 'fix:      A bug fix',
           value: 'fix'
         }, {
-          name: 'docs:     Changes to documentation only.',
+          name: 'docs:     Change to documentation or comments only.',
           value: 'docs'
         }, {
-          name: 'style:    Changes that do not affect the meaning of the code\n            (white-space, formatting, missing semi-colons, etc)',
+          name: 'style:    Change that does not affect the meaning of the code\n            (white-space, alignment, formatting, etc)',
           value: 'style'
         }, {
-          name: 'refactor: A code change that neither fixes a bug or adds a feature',
+          name: 'refactor: Code change that neither fixes a bug nor adds a feature',
           value: 'ref'
         }, {
-          name: 'perf:     A code change that improves performance',
+          name: 'perf:     Code change that improves performance',
           value: 'perf'
         }, {
-          name: 'test:     Adding missing tests',
+          name: 'test:     Add test(s)',
           value: 'test'
         }, {
           name: 'remove:   Remove file(s), function(s), etc from the codebase',
