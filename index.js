@@ -256,13 +256,14 @@ function buildCommitMessage(answers) {
   var head;
   var commitMessage;
 
-  // Format header
+  // Construct header
   scope = (!!scope) ? '(' + scope + ')' : '';
   head = (type + scope + delimiter + subject + target);
 
-  // Format commit
+  // Format commit header
   commitMessage = head;
 
+  // Format commit body
   if (!!body) {
     commitMessage += '\n';
     commitMessage += '\n';
