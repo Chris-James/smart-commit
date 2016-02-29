@@ -300,19 +300,17 @@ function validateLength(input, answerObj) {
    * @returns {String | Boolean} error message or true
   **/
 
-  var overflow = calculateOverflow(input, answerObj);
+  var HEADER_LIMIT = 69;
+
+  var inputLength = input.length;
+  var typeLength = answerObj.type.length;
+  var scopeLength = (!!answerObj.scope) ? (answerObj.scope.length + 2) : 0;    // +2 for the parentheses
+  var delimiterLength = 2;  // +2 for ": "
+
+  var overflow = calculateOverflow(inputLength, typeLength, scopeLength, delimiterLength, HEADER_LIMIT);
 
   return (!!overflow) ? lengthError(overflow) : true;
 }
-
-function calculateOverflow(input, answerObj) {
-
-  var GITHUB_HEADER_LIMIT = 69;
-  var inputLen = input.length;
-  var typeLen = answerObj.type.length;
-
-  // Remember +2 for the parentheses
-  var scopeLen = !!answerObj.scope ? answerObj.scope.length + 2 : 0;
 
   // Remember to count ": "
   var delimiterLen = 2;
