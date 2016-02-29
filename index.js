@@ -201,9 +201,11 @@ module.exports = {
 
 function buildBody(input) {
 
-  /* Returns properly formatted body for commit message.
+  /**
+   * Returns properly formatted body for commit message.
    * @param {String} input
-   * @return {String} body */
+   * @return {String} body
+  **/
 
   // Default to empty string in case of undefined input
   var bodyInput = input || '';
@@ -235,9 +237,11 @@ function buildBody(input) {
 
 function buildCommitMessage(answers) {
 
-  /* Returns properly formatted commit mesage.
+  /**
+   * Returns properly formatted commit mesage.
    * @param {Object} answers
-   * @return {String} commitMessage */
+   * @return {String} commitMessage
+  **/
 
   // Header Vars
   var type = answers.type;
@@ -298,6 +302,7 @@ function validateLength(input, answerObj) {
    * Else, returns error message created by lengthError().
 
    * @param {String} input
+   * @param {Object} answerObj
    * @returns {String | Boolean} error message or true
   **/
 
@@ -327,9 +332,11 @@ function lengthError(overflowAmount) {
 
 function trim(input) {
 
-  /* Removes leading and trailing whitespace from input.
+  /**
+   * Removes leading and trailing whitespace from input.
    * @param {String} input
-   * @return {String} input */
+   * @returns {String} input
+  **/
 
   return input.trim();
 
