@@ -15,6 +15,7 @@ module.exports = {
   trim: trim,
   buildBody: buildBody,
   lengthError: lengthError,
+  calculateOverflow: calculateOverflow,
   // When a user runs `git cz`, prompter will be executed.
   // We pass you cz, which is currently just an instance of inquirer.js.
   // Using this you can ask questions and get answers.
