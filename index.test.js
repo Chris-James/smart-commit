@@ -17,3 +17,9 @@ test('lengthError()', function(t) {
   t.is(index.lengthError(2), 'Message was 2 characters too long.', 'returns plural.');
   t.is(index.lengthError(45), 'Message was 45 characters too long.', 'returns large plural.');
 });
+
+test('calculateOverflow()', function(t) {
+  t.is(index.calculateOverflow(10, 10, 10, 2, 69), false, 'returns false when no overflow.');
+  t.is(index.calculateOverflow(55, 5, 10, 2, 69), 3, 'returns correct amount when overflow.');
+  t.is(index.calculateOverflow(52, 5, 10, 2, 69), false, 'returns false with exactly 69 characters.');
+})
