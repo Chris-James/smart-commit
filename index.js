@@ -312,12 +312,11 @@ function validateLength(input, answerObj) {
   return (!!overflow) ? lengthError(overflow) : true;
 }
 
-  // Remember to count ": "
-  var delimiterLen = 2;
+function calculateOverflow(inputLength, typeLength, scopeLength, delimiterLength, LIMIT) {
 
-  var charsRemaining = (GITHUB_HEADER_LIMIT - (typeLen + scopeLen + delimiterLen));
+  var charsRemaining = (LIMIT - (typeLength + scopeLength + delimiterLength));
 
-  return (inputLen > charsRemaining) ? (inputLen - charsRemaining) : '';
+  return (inputLength > charsRemaining) ? (inputLength - charsRemaining) : false;
 }
 
 function lengthError(overflowAmount) {
