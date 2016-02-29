@@ -14,6 +14,7 @@ var log = new Log('info');
 module.exports = {
   trim: trim,
   buildBody: buildBody,
+  lengthError: lengthError,
   // When a user runs `git cz`, prompter will be executed.
   // We pass you cz, which is currently just an instance of inquirer.js.
   // Using this you can ask questions and get answers.
@@ -321,9 +322,9 @@ function calculateOverflow(input, answerObj) {
   return (inputLen > charsRemaining) ? (inputLen - charsRemaining) : '';
 }
 
-function lengthError(charOverflow) {
-  var plural = (charOverflow > 1) ? '(s)' : '' ;
-  return 'Message was ' + charOverflow + ' character' + plural + ' too long.';
+function lengthError(overflowAmount) {
+  var plural = (overflowAmount > 1) ? 's' : '';
+  return 'Message was ' + overflowAmount + ' character' + plural + ' too long.';
 }
 
 function trim(input) {
