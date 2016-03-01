@@ -22,4 +22,10 @@ test('calculateOverflow()', function(t) {
   t.is(index.calculateOverflow(10, 10, 10, 2, 69), false, 'returns false when no overflow.');
   t.is(index.calculateOverflow(55, 5, 10, 2, 69), 3, 'returns correct amount when overflow.');
   t.is(index.calculateOverflow(52, 5, 10, 2, 69), false, 'returns false with exactly 69 characters.');
-})
+});
+
+test('validateLength()', function(t) {
+  t.is(index.validateLength('13 char input', {type: 'feat', scope:'index'}), true, 'returns true for valid length');
+  t.is(index.validateLength('This sentence simulates an input message that will not pass validation.', {type: 'ref', scope:'func'}), 'Message was 13 characters too long.', 'returns error for invalid length');
+  t.is(index.validateLength('13 char input', {type: 'feat', scope:''}), true, 'handles empty scope');
+});
