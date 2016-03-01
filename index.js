@@ -325,7 +325,7 @@ function validateLength(subject, answerObj) {
   return (!!overflow) ? lengthError(overflow) : true;
 }
 
-function calculateOverflow(inputLength, typeLength, scopeLength, delimiterLength, LIMIT) {
+function calculateOverflow(subjectLength, typeLength, scopeLength, delimiterLength, LIMIT) {
 
   /**
    * @function calculateOverflow
@@ -341,7 +341,12 @@ function calculateOverflow(inputLength, typeLength, scopeLength, delimiterLength
    * @returns {Number | Boolean} number of characters past 69 or false
   **/
 
-  return (inputLength > charsRemaining) ? (inputLength - charsRemaining) : false;
+  var charsRemainingInHeader = (LIMIT - (typeLength + scopeLength + delimiterLength));
+  var overflow = (subjectLength > charsRemainingInHeader);
+  var totalCharsOver = (subjectLength - charsRemainingInHeader);
+  var noOverflow = false;
+
+  return (overflow)? totalCharsOver : noOverflow;
 }
 
 function lengthError(overflowAmount) {
