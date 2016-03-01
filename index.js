@@ -350,6 +350,16 @@ function calculateOverflow(subjectLength, typeLength, scopeLength, delimiterLeng
 }
 
 function lengthError(overflowAmount) {
+
+  /**
+   * @function lengthError
+   * Only called when a commit header is longer than the specified LIMIT.
+   * Uses the amount of chars of overflow to created a properly formatted error message.
+
+   * @param {Number} overflowAmount
+   * @returns {String} formatted error message
+  **/
+
   var plural = (overflowAmount > 1) ? 's' : '';
   return 'Message was ' + overflowAmount + ' character' + plural + ' too long.';
 }
