@@ -341,9 +341,9 @@ function calculateOverflow(subjectLength, typeLength, scopeLength, delimiterLeng
    * @returns {Number | Boolean} number of characters past 69 or false
   **/
 
-  var charsRemainingInHeader = (LIMIT - (typeLength + scopeLength + delimiterLength));
-  var overflow = (subjectLength > charsRemainingInHeader);
-  var totalCharsOver = (subjectLength - charsRemainingInHeader);
+  var charsRemainingForSubject = (LIMIT - (typeLength + scopeLength + delimiterLength));
+  var overflow = (subjectLength > charsRemainingForSubject);
+  var totalCharsOver = (subjectLength - charsRemainingForSubject);
   var noOverflow = false;
 
   return (overflow)? totalCharsOver : noOverflow;
