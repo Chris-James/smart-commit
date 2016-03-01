@@ -299,26 +299,27 @@ function buildCommitMessage(answers) {
   return commitMessage;
 }
 
-function validateLength(input, answerObj) {
+function validateLength(subject, answerObj) {
 
   /**
    * Uses calculateOverflow() to determine if length of input is <= 69 chars.
    * If length of input string <= 69 characters, returns true.
    * Else, returns error message created by lengthError().
 
-   * @param {String} input
+   * @param {String} subject
    * @param {Object} answerObj
    * @returns {String | Boolean} error message or true
   **/
 
   var HEADER_LIMIT = 69;
 
-  var inputLength = input.length;
+  var subjectLength = subject.length;
   var typeLength = answerObj.type.length;
   var scopeLength = (!!answerObj.scope) ? (answerObj.scope.length + 2) : 0;    // +2 for the parentheses
   var delimiterLength = 2;  // +2 for ": "
 
-  var overflow = calculateOverflow(inputLength, typeLength, scopeLength, delimiterLength, HEADER_LIMIT);
+  // calculateOverflow will return how many characters beyond the HEADER_LIMIT or false
+  var overflow = calculateOverflow(subjectLength, typeLength, scopeLength, delimiterLength, HEADER_LIMIT);
 
   return (!!overflow) ? lengthError(overflow) : true;
 }
