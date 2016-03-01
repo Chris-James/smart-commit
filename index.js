@@ -327,7 +327,19 @@ function validateLength(subject, answerObj) {
 
 function calculateOverflow(inputLength, typeLength, scopeLength, delimiterLength, LIMIT) {
 
-  var charsRemaining = (LIMIT - (typeLength + scopeLength + delimiterLength));
+  /**
+   * @function calculateOverflow
+   * Used to validate the length of the complete, formatted commit header.
+   * Length is valid if it is <= the limit specified by LIMIT.
+
+   * @param {Number} subjectLength
+   * @param {Number} typeLength
+   * @param {Number} scopeLength
+   * @param {Number} delimiterLength
+   * @param {Number} LIMIT
+
+   * @returns {Number | Boolean} number of characters past 69 or false
+  **/
 
   return (inputLength > charsRemaining) ? (inputLength - charsRemaining) : false;
 }
