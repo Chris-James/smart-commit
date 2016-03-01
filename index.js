@@ -203,7 +203,9 @@ module.exports = {
 function buildBody(input) {
 
   /**
+   * @function buildBody
    * Returns properly formatted body for commit message.
+
    * @param {String} input
    * @return {String} body
   **/
@@ -239,7 +241,9 @@ function buildBody(input) {
 function buildCommitMessage(answers) {
 
   /**
+   * @function buildCommitMessage
    * Returns properly formatted commit mesage.
+
    * @param {Object} answers
    * @return {String} commitMessage
   **/
@@ -334,7 +338,9 @@ function lengthError(overflowAmount) {
 function trim(input) {
 
   /**
+   * @function trim
    * Removes leading and trailing whitespace from input.
+
    * @param {String} input
    * @returns {String} input
   **/
