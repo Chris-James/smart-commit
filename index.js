@@ -8,27 +8,25 @@ var fs = require('fs');
 
 var log = new Log('info');
 
-// This can be any kind of SystemJS compatible module.
-// We use Commonjs here, but ES6 or AMD would do just fine.
-
 module.exports = {
   trim: trim,
   buildBody: buildBody,
   lengthError: lengthError,
   calculateOverflow: calculateOverflow,
   validateLength: validateLength,
-  // When a user runs `git cz`, prompter will be executed.
-  // We pass you cz, which is currently just an instance of inquirer.js.
-  // Using this you can ask questions and get answers.
-
-  // Execute the commit callback when you're ready to send
-  // a commit template back to git.
 
   // By default, we'll de-indent your commit template & will keep empty lines.
   prompter: function(cz, commit) {
 
-    // Ask some questions of the user so we can populate our commit template.
-    // See inquirer.js docs for specifics.
+    /**
+     * @function prompter
+     * Defines the questions asked, gather answers from user, formats commit message, executes git commit.
+     * Uses inquirer.js for Q&A - see docs for specifics.
+
+     * @param {Object} cz - an instance of inquirer.js. Executed when user runs 'git cz'.
+     * @param {Function} commit - callback. Argument is commit message that will be passed to Git.
+    **/
+
     cz.prompt([
       {
         type: 'list',
