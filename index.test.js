@@ -8,9 +8,10 @@ test('trim()', function(t) {
 
 test('buildBody()', function(t) {
   t.is(index.buildBody('This is a newline||test.'), 'This is a newline\n\ntest.', 'replaces \'|\' with \'\\n\'.');
-  t.is(index.buildBody(undefined), '', 'handles undefined.');
+  t.is(index.buildBody(undefined), '', 'undefined returns empty string');
   t.not(index.buildBody('test').slice(-1), '\n', 'does not concatenate trailing newline.');
-  t.is(index.buildBody(''), '', 'returns empty string');
+  t.is(index.buildBody(''), '', ' \'\' returns empty string');
+  t.is(index.buildBody(null), '', 'null returns empty string')
 });
 
 test('lengthError()', function(t) {
