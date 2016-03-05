@@ -31,3 +31,9 @@ test('validateLength()', function(t) {
   t.is(index.validateLength('This sentence simulates an input message that will not pass validation.', {type: 'ref', scope:'func'}), 'Message was 13 characters too long.', 'returns error for invalid length');
   t.is(index.validateLength('13 char input', {type: 'feat', scope:''}), true, 'handles empty scope');
 });
+
+test('concat()', function(t) {
+  t.is(index.concat('test', '\n', 1), 'test\n', 'appends one newline');
+  t.is(index.concat('test', '\n', 2), 'test\n\n', 'appends two newlines');
+
+});
