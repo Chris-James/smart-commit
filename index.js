@@ -14,6 +14,7 @@ module.exports = {
   lengthError: lengthError,
   calculateOverflow: calculateOverflow,
   validateLength: validateLength,
+  concat: concat,
 
   // By default, we'll de-indent your commit template & will keep empty lines.
   prompter: function(cz, commit) {
