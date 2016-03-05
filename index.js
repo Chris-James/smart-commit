@@ -297,6 +297,23 @@ function buildCommitMessage(answers) {
   return commitMessage;
 }
 
+function concat(target, string, count) {
+  /**
+   * @function concat
+   * Appends <string> to <target> <count> times.
+
+   * @param {String} target
+   * @param {String} string
+   * @param {Number} count
+   * @return {String} target
+  **/
+  while (count) {
+    target += string;
+    count--;
+  }
+  return target;
+}
+
 function validateLength(subject, answerObj) {
 
   /**
