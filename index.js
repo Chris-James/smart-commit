@@ -25,7 +25,7 @@ module.exports = {
      * Uses inquirer.js for Q&A - see docs for specifics.
 
      * @param {Object} cz - an instance of inquirer.js. Executed when user runs 'git cz'.
-     * @param {Function} commit - callback. Argument is commit message that will be passed to Git.
+     * @param {Function} commit - callback. The argument is the message that will be passed to Git.
     **/
 
     cz.prompt([
