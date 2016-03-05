@@ -228,7 +228,7 @@ function buildBody(input) {
 
     // Wrap then concatenate each chunk
     body += wrap(item, wrapOptions);
-    body += '\n';
+    body = concat(body, '\n', 1);
 
   });
 
