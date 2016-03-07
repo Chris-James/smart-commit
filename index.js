@@ -275,23 +275,20 @@ function buildCommitMessage(answers) {
 
   // Format commit body
   if (!!body) {
-    commitMessage += '\n';
-    commitMessage += '\n';
+    commitMessage = concat(commitMessage, '\n', 2);
     commitMessage += buildBody(body);
   }
 
   // Format commit footer
   if (!!pair) {
-    commitMessage += '\n';
-    commitMessage += '\n';
+    commitMessage = concat(commitMessage, '\n', 2);
     commitMessage += 'Driver: ' + driver;
-    commitMessage += '\n';
+    commitMessage = concat(commitMessage, '\n', 1);
     commitMessage += 'Navigator(s): ' + navs;
   }
 
   if (!!close) {
-    commitMessage += '\n';
-    commitMessage += '\n';
+    commitMessage = concat(commitMessage, '\n', 2);
     commitMessage += 'Closes: ' + issueNum;
   }
 
