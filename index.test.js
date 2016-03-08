@@ -42,3 +42,9 @@ test('formatHeader()', function(t) {
   t.is(index.formatHeader('feat', undefined, 'Initial commit', undefined), 'feat: Initial commit', 'handles type and scope');
   t.is(index.formatHeader('rem', undefined, undefined, 'file, file, file'), 'rem: file, file, file', 'handles rem and target');
 });
+
+test('buildCommitMessage()', function(t) {
+  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: false, close: false}), 'feat(index): Add break tag\n\nAdd break tag to body of index.');
+  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: true, driver:'Foob Ar', navs:'Buzz Fizz', close: false}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\nDriver: Foob Ar\nNavigator(s): Buzz Fizz');
+  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: false, close: true, issue:'367'}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\n\nCloses: 367');
+});
