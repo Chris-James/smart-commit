@@ -35,5 +35,10 @@ test('validateLength()', function(t) {
 test('concat()', function(t) {
   t.is(index.concat('test', '\n', 1), 'test\n', 'appends one newline');
   t.is(index.concat('test', '\n', 2), 'test\n\n', 'appends two newlines');
+});
 
+test('formatHeader()', function(t) {
+  t.is(index.formatHeader('fix', 'index', 'Add body', undefined), 'fix(index): Add body', 'handles type, scope, and subject');
+  t.is(index.formatHeader('feat', undefined, 'Initial commit', undefined), 'feat: Initial commit', 'handles type and scope');
+  t.is(index.formatHeader('rem', undefined, undefined, 'file, file, file'), 'rem: file, file, file', 'handles rem and target');
 });
