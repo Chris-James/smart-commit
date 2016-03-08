@@ -277,16 +277,16 @@ function buildCommitMessage(answers) {
   }
 
   // Format commit footer
+  if (!!close) {
+    commitMessage = concat(commitMessage, '\n', 2);
+    commitMessage += 'Closes: ' + issueNum;
+  }
+
   if (!!pair) {
     commitMessage = concat(commitMessage, '\n', 2);
     commitMessage += 'Driver: ' + driver;
     commitMessage = concat(commitMessage, '\n', 1);
     commitMessage += 'Navigator(s): ' + navs;
-  }
-
-  if (!!close) {
-    commitMessage = concat(commitMessage, '\n', 2);
-    commitMessage += 'Closes: ' + issueNum;
   }
 
   return commitMessage;
