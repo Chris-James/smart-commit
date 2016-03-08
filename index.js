@@ -251,9 +251,8 @@ function buildCommitMessage(answers) {
   // Header Vars
   var type = answers.type;
   var scope = answers.scope;
-  var subject = answers.subject || '';
-  var target = answers.target || '';
-  var delimiter = ': ';
+  var subject = answers.subject;
+  var target = answers.target;
 
   var body = answers.body;
 
@@ -265,14 +264,10 @@ function buildCommitMessage(answers) {
   var issueNum = answers.issue;
 
   var head;
-  var commitMessage;
+  var commitMessage = '';
 
-  // Construct header
-  scope = (!!scope) ? '(' + scope + ')' : '';
-  head = (type + scope + delimiter + subject + target);
-
-  // Format commit header
-  commitMessage = head;
+  // Add commit header
+  commitMessage += formatHeader(type, scope, subject, target);
 
   // Format commit body
   if (!!body) {
