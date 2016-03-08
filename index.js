@@ -295,6 +295,34 @@ function buildCommitMessage(answers) {
   return commitMessage;
 }
 
+function formatHeader(inputType, inputScope, inputSubject, inputTarget) {
+
+  /**
+   * @function formatHeader
+   * Returns a properly formatted commit header.
+
+   * @param {String} type
+   * @param {String} scope
+   * @param {String} subject
+   * @param {String} target
+   * @return {String} header
+  **/
+
+  type = inputType || '';
+  scope = inputScope || '';
+  subject = inputSubject || '';
+  target = inputTarget || '';
+
+  header = '';
+
+  scope = (!!scope) ? '(' + scope + ')' : '';
+  header += (type + scope + ': ' + subject + target);
+
+  return header
+
+}
+
+
 function concat(target, string, count) {
   /**
    * @function concat
