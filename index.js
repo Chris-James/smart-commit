@@ -296,31 +296,27 @@ function buildCommitMessage(answers) {
   return commitMessage;
 }
 
-function formatHeader(inputType, inputScope, inputSubject, inputTarget) {
+function formatHeader(headerObj) {
 
   /**
    * @function formatHeader
    * Returns a properly formatted commit header.
 
-   * @param {String} type
-   * @param {String} scope
-   * @param {String} subject
-   * @param {String} target
+   * @param {Object} headerObj
    * @return {String} header
   **/
 
-  type = inputType || '';
-  scope = inputScope || '';
-  subject = inputSubject || '';
-  target = inputTarget || '';
+  var type = headerObj.type || '';
+  var scope = headerObj.scope || '';
+  var subject = headerObj.subject || '';
+  var target = headerObj.target || '';
 
-  header = '';
+  var header = '';
 
   scope = (!!scope) ? '(' + scope + ')' : '';
   header += (type + scope + ': ' + subject + target);
 
-  return header
-
+  return header;
 }
 
 
