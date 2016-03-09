@@ -264,11 +264,13 @@ function buildCommitMessage(answers) {
   var body = answers.body;
 
   // Footer Vars
-  var pair = answers.pair;
-  var driver = answers.driver;
-  var navs = answers.navs;
-  var close = answers.close;
-  var issueNum = answers.issue;
+  var footer = {
+    pair: answers.pair,
+    driver: answers.driver,
+    navs: answers.navs,
+    close: answers.close,
+    issue: answers.issue
+  };
 
   var head;
   var commitMessage = '';
