@@ -223,19 +223,23 @@ function buildBody(input) {
     width: 72
   };
 
-  // Split the body into discrete chunks
-  statements = bodyInput.split('|');
+  if (!!bodyInput) {
 
-  statements.forEach(function(item) {
+    body += concat('\n', 2);
 
-    // Wrap then concatenate each chunk
-    body += wrap(item, wrapOptions);
-    body = concat(body, '\n', 1);
+    // Split the body into discrete chunks
+    statements = bodyInput.split('|');
 
-  });
+    statements.forEach(function(item) {
 
-  // Remove trailing '\n'
-  return body.slice(0,-1);
+      // Wrap then concatenate each chunk
+      body += wrap(item, wrapOptions);
+      body += concat('\n', 1);
+    });
+
+  }
+
+  return (!!body) ? body.slice(0,-1) : body;
 
 }
 
