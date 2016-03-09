@@ -254,10 +254,12 @@ function buildCommitMessage(answers) {
   **/
 
   // Header Vars
-  var type = answers.type;
-  var scope = answers.scope;
-  var subject = answers.subject;
-  var target = answers.target;
+  var header = {
+    type: answers.type,
+    scope: answers.scope,
+    subject: answers.subject,
+    target: answers.target
+  };
 
   var body = answers.body;
 
