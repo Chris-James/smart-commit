@@ -324,21 +324,25 @@ function formatHeader(inputType, inputScope, inputSubject, inputTarget) {
 }
 
 
-function concat(target, string, count) {
+function concat(string, count) {
+
   /**
    * @function concat
-   * Appends <string> to <target> <count> times.
+   * Returns a string consisting of <string> <count> times.
 
-   * @param {String} target
    * @param {String} string
    * @param {Number} count
    * @return {String} target
   **/
+
+  var out = '';
+
   while (count) {
-    target += string;
+    out += string;
     count--;
   }
-  return target;
+
+  return out;
 }
 
 function validateLength(subject, answerObj) {
