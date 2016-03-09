@@ -275,14 +275,13 @@ function buildCommitMessage(answers) {
   var head;
   var commitMessage = '';
 
-  // Add commit header
-  commitMessage += formatHeader(type, scope, subject, target);
+  commitMessage += formatHeader(header);
+  commitMessage += buildBody(body);
+  commitMessage += formatFooter(footer);
 
-  // Format commit body
-  if (!!body) {
-    commitMessage = concat(commitMessage, '\n', 2);
-    commitMessage += buildBody(body);
-  }
+  return commitMessage;
+
+}
 
 function formatFooter(footerObj) {
 
