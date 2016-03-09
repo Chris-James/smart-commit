@@ -280,20 +280,28 @@ function buildCommitMessage(answers) {
     commitMessage += buildBody(body);
   }
 
-  // Format commit footer
-  if (!!close) {
-    commitMessage = concat(commitMessage, '\n', 2);
-    commitMessage += 'Closes: ' + issueNum;
+function formatFooter(footerObj) {
+
+  /**
+   * @function commitFooter
+
+   * @param {Object} footerObj
+   * @return {String} footer
+  **/
+
+  var footer = '';
+
+  if (!!footerObj.close) {
+    footer += concat('\n', 2);
+    footer += 'closes: ' + footerObj.issue;
   }
 
-  if (!!pair) {
-    commitMessage = concat(commitMessage, '\n', 2);
-    commitMessage += 'Driver: ' + driver;
-    commitMessage = concat(commitMessage, '\n', 1);
-    commitMessage += 'Navigator(s): ' + navs;
+  if (!!footerObj.pair) {
+    footer += concat('\n', 2);
+    footer += 'paired-with: ' + footerObj.navs;
   }
 
-  return commitMessage;
+  return footer;
 }
 
 function formatHeader(headerObj) {
