@@ -46,7 +46,7 @@ module.exports = {
           name: 'docs:     Change to documentation or comments only.',
           value: 'docs'
         }, {
-          name: 'style:    Change that does not affect the meaning of the code\n            (white-space, alignment, formatting, etc)',
+          name: 'style:    Change that does not affect the meaning of the code (white-space, alignment, etc)',
           value: 'style'
         }, {
           name: 'refactor: Code change that neither fixes a bug nor adds a feature',
