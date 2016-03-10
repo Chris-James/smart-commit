@@ -144,17 +144,7 @@ module.exports = {
         when: function(answerObj) {
           return answerObj.type !== 'rem';
         }
-      }, {
-        type: 'input',
-        name: 'driver',
-        message: 'Driver: ',
-        when: function(answerObj) {
-          return !!answerObj.pair;
-        },
-        filter: function(driver) {
-          return trim(driver);
-        }
-      }, {
+      },{
         type: 'input',
         name: 'navs',
         message: 'Navigator(s): ',
