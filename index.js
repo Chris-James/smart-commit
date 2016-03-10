@@ -111,6 +111,20 @@ module.exports = {
         }
       }, {
         type: 'confirm',
+        name: 'break',
+        message: 'Does this commit introduce a breaking change?'
+      }, {
+        type: 'input',
+        name: 'breakingChange',
+        message: 'Provide a longer description of the breaking changes. Use "|" to add a line breaks.\n',
+        filter: function(change) {
+          return trim(change);
+        },
+        when: function(answerObj) {
+          return (!!answerObj.break)
+        }
+      }, {
+        type: 'confirm',
         name: 'close',
         message: 'Does this commit close an issue?',
       }, {
