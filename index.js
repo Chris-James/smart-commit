@@ -296,15 +296,20 @@ function formatFooter(footerObj) {
    * @return {String} footer
   **/
 
-  var footer = '';
+  var breaks = footerObj.break;
+  var footer = '\n\n';
+
+  if (!!breaks) {
+    footer += 'breaking-change: ' + footerObj.change;
+    footer += concat('\n', 2);
+  }
 
   if (!!footerObj.close) {
-    footer += concat('\n', 2);
     footer += 'closes: ' + footerObj.issue;
+    footer += concat('\n', 1);
   }
 
   if (!!footerObj.pair) {
-    footer += concat('\n', 2);
     footer += 'paired-with: ' + footerObj.navs;
   }
 
