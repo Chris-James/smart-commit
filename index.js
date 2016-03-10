@@ -52,9 +52,6 @@ module.exports = {
           name: 'refactor: Code change that neither fixes a bug nor adds a feature',
           value: 'ref'
         }, {
-          name: 'perf:     Code change that improves performance',
-          value: 'perf'
-        }, {
           name: 'test:     Add test(s)',
           value: 'test'
         }, {
