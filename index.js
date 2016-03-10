@@ -144,9 +144,9 @@ module.exports = {
       },{
         type: 'input',
         name: 'navs',
-        message: 'Navigator(s): ',
+        message: 'List the people you paired with: ',
         when: function(answerObj) {
-          return !!answerObj.pair;
+          return (!!answerObj.pair);
         },
         filter: function(navs) {
           return trim(navs);
