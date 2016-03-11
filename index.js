@@ -65,33 +65,17 @@ module.exports = {
         type: 'input',
         name: 'scope',
         message: 'Denote the location of this change: ',
-        when: function(answerObj) {
-          return answerObj.type !== 'rem';
+        validate: function(scope) {
+          var answers = arguments[1];
+          return validateLength(scope, answers);
         },
         filter: function(scope) {
           return trim(scope);
         }
       }, {
         type: 'input',
-        name: 'target',
-        message: 'What are you removing?',
-        when: function(answerObj) {
-          return answerObj.type === 'rem';
-        },
-        validate: function(target) {
-          var answers = arguments[1];
-          return validateLength(target, answers);
-        },
-        filter: function(target) {
-          return trim(target);
-        }
-      }, {
-        type: 'input',
         name: 'subject',
         message: 'Write a short, imperative tense description of the change: ',
-        when: function(answerObj) {
-          return answerObj.type !== 'rem';
-        },
         validate: function(subject) {
           var answers = arguments[1];
           return validateLength(subject, answers);
@@ -138,9 +122,6 @@ module.exports = {
         type: 'confirm',
         name: 'pair',
         message: 'Did you pair with anyone?',
-        when: function(answerObj) {
-          return answerObj.type !== 'rem';
-        }
       },{
         type: 'input',
         name: 'navs',
@@ -258,8 +239,7 @@ function buildCommitMessage(answers) {
   var header = {
     type: answers.type,
     scope: answers.scope,
-    subject: answers.subject,
-    // target: answers.target
+    subject: answers.subject
   };
 
   var body = answers.body;
