@@ -310,21 +310,12 @@ function formatHeader(headerObj) {
   var type = headerObj.type || '';
   var scope = headerObj.scope || '';
   var subject = headerObj.subject || '';
-  var target = headerObj.target || '';
 
-  var header = '';
+  scope = (!!scope) ? (' ' + scope) : '';
+  subject = (!!subject) ? (': ' + subject) : '';
 
-  scope = (!!scope) ? '(' + scope + ')' : '';
-  header += (type + scope + ': ' + subject + target);
+  return type + scope + subject;
 
-  return header;
-}
-
-function formatScope(type, scope, subject) {
-
-  delimiter = ((type === 'rem') && (subject))? ': ' : '';
-
-  return (type + ' ' + scope + delimiter + subject);
 }
 
 function concat(string, count) {
