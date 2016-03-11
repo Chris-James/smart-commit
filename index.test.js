@@ -38,9 +38,9 @@ test('concat()', function(t) {
 });
 
 test('formatHeader()', function(t) {
-  t.is(index.formatHeader({type: 'fix', scope: 'index', subject: 'Add body', target: undefined}), 'fix(index): Add body', 'handles type, scope, and subject');
-  t.is(index.formatHeader({type: 'feat', scope: undefined, subject: 'Initial commit', target: undefined}), 'feat: Initial commit', 'handles type and scope');
-  t.is(index.formatHeader({type: 'rem', scope: undefined, subject: undefined, target: 'file, file, file'}), 'rem: file, file, file', 'handles rem and target');
+  t.is(index.formatHeader({type: 'ref', scope: 'index.c', subject: 'Remove foo from bar()'}), 'ref index.c: Remove foo from bar()', 'formats header');
+  t.is(index.formatHeader({type: 'feat', scope: undefined, subject: 'Initial commit'}), 'feat: Initial commit', 'formats header with undefined scope');
+  t.is(index.formatHeader({type: 'ref', scope: 'index.c', subject: undefined}), 'ref index.c', 'formats header with undefined subject');
 });
 
 test('buildCommitMessage()', function(t) {
