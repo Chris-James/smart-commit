@@ -33,19 +33,20 @@ test('validateLength()', function(t) {
 });
 
 test('concat()', function(t) {
-  t.is(index.concat('test', '\n', 1), 'test\n', 'appends one newline');
-  t.is(index.concat('test', '\n', 2), 'test\n\n', 'appends two newlines');
+  t.is(index.concat('\n', 1), '\n', 'returns one newline');
+  t.is(index.concat('\n', 2), '\n\n', 'returns two newlines');
 });
 
 test('formatHeader()', function(t) {
-  t.is(index.formatHeader('fix', 'index', 'Add body', undefined), 'fix(index): Add body', 'handles type, scope, and subject');
-  t.is(index.formatHeader('feat', undefined, 'Initial commit', undefined), 'feat: Initial commit', 'handles type and scope');
-  t.is(index.formatHeader('rem', undefined, undefined, 'file, file, file'), 'rem: file, file, file', 'handles rem and target');
+  t.is(index.formatHeader({type: 'fix', scope: 'index', subject: 'Add body', target: undefined}), 'fix(index): Add body', 'handles type, scope, and subject');
+  t.is(index.formatHeader({type: 'feat', scope: undefined, subject: 'Initial commit', target: undefined}), 'feat: Initial commit', 'handles type and scope');
+  t.is(index.formatHeader({type: 'rem', scope: undefined, subject: undefined, target: 'file, file, file'}), 'rem: file, file, file', 'handles rem and target');
 });
 
 test('buildCommitMessage()', function(t) {
-  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: false, close: false}), 'feat(index): Add break tag\n\nAdd break tag to body of index.');
-  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: true, driver:'Foob Ar', navs:'Buzz Fizz', close: false}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\nDriver: Foob Ar\nNavigator(s): Buzz Fizz');
-  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: false, close: true, issue:'367'}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\nCloses: 367');
-  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: true, driver:'Foob Ar', navs:'Buzz Fizz', close: true, issue:'367'}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\nCloses: 367\n\nDriver: Foob Ar\nNavigator(s): Buzz Fizz');
+  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: false, close: false}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\n');
+  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: true, driver:'Foob Ar', navs:'Buzz Fizz', close: false}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\npaired-with: Buzz Fizz');
+  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', break: true, breakingChange: 'This commit introduces a breaking change.', pair: false, close: false}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\nbreaking-change: This commit introduces a breaking change.\n\n');
+  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: false, close: true, issue:'367'}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\ncloses: 367\n');
+  t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', break: true, breakingChange: 'This commit introduces a breaking change.', pair: true, driver:'Foob Ar', navs:'Buzz Fizz', close: true, issue:'367'}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\nbreaking-change: This commit introduces a breaking change.\n\ncloses: 367\npaired-with: Buzz Fizz');
 });
