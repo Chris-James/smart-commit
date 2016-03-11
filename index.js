@@ -279,19 +279,19 @@ function formatFooter(footerObj) {
   var footer = '\n\n';
 
   if (!!breaks) {
-    footer += 'breaking-change:'
+    footer += 'BREAKING-CHANGE:'
     footer += concat('\n', 1);
     footer += footerObj.change;
     footer += concat('\n', 2);
   }
 
   if (!!footerObj.close) {
-    footer += 'closes: ' + footerObj.issue;
+    footer += 'CLOSES: ' + footerObj.issue;
     footer += concat('\n', 1);
   }
 
   if (!!footerObj.pair) {
-    footer += 'paired-with: ' + footerObj.navs;
+    footer += 'PAIRED-WITH: ' + footerObj.navs;
   }
 
   return footer;
