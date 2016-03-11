@@ -259,13 +259,15 @@ function buildCommitMessage(answers) {
     type: answers.type,
     scope: answers.scope,
     subject: answers.subject,
-    target: answers.target
+    // target: answers.target
   };
 
   var body = answers.body;
 
   // Footer Vars
   var footer = {
+    break: answers.break,
+    change: answers.breakingChange,
     pair: answers.pair,
     driver: answers.driver,
     navs: answers.navs,
