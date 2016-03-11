@@ -280,7 +280,7 @@ function formatFooter(footerObj) {
 
   if (!!breaks) {
     footer += 'BREAKING-CHANGE:'
-    footer += concat('\n', 1);
+    footer += concat('\n', 2);
     footer += footerObj.change;
     footer += concat('\n', 2);
   }
