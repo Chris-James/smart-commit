@@ -43,23 +43,23 @@ module.exports = {
           name: 'fix:      A bug fix',
           value: 'fix'
         }, {
-          name: 'docs:     Change to documentation or comments only.',
+          name: 'docs:     A change to documentation or comments only.',
           value: 'docs'
         }, {
-          name: 'style:    Change that does not affect the meaning of the code (white-space, alignment, etc)',
+          name: 'style:    A change that does not affect the meaning of the code (white-space, alignment, etc)',
           value: 'style'
         }, {
-          name: 'refactor: Code change that neither fixes a bug nor adds a feature',
+          name: 'refactor: A change that neither fixes a bug nor adds a feature',
           value: 'ref'
         }, {
           name: 'test:     Add test(s)',
           value: 'test'
         }, {
-          name: 'remove:   Remove file(s), function(s), etc from the codebase',
-          value: 'rem'
-        }, {
-          name: 'chore:    Change to the build process, auxiliary tools, libraries, etc',
+          name: 'chore:    A change to the build process, auxiliary tools, libraries, etc',
           value: 'chore'
+        }, {
+          name: 'perf:     A change that improves performance',
+          value: 'perf'
         }]
       }, {
         type: 'input',
