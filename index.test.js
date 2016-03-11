@@ -50,3 +50,8 @@ test('buildCommitMessage()', function(t) {
   t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', pair: false, close: true, issue:'367'}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\ncloses: 367\n');
   t.is(index.buildCommitMessage({type:'feat', scope:'index', subject:'Add break tag', body:'Add break tag to body of index.', break: true, breakingChange: 'This commit introduces a breaking change.', pair: true, driver:'Foob Ar', navs:'Buzz Fizz', close: true, issue:'367'}), 'feat(index): Add break tag\n\nAdd break tag to body of index.\n\nbreaking-change: This commit introduces a breaking change.\n\ncloses: 367\npaired-with: Buzz Fizz');
 });
+
+test('formatScope()', function(t) {
+  t.is(index.formatScope('rem', 'index.c', ''), 'rem index.c');
+  t.is(index.formatScope('rem', 'foo()', 'Remove bar() from foo()'), 'rem foo(): Remove bar() from foo()');
+});
