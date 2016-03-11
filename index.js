@@ -340,6 +340,12 @@ function formatHeader(headerObj) {
   return header;
 }
 
+function formatScope(type, scope, subject) {
+
+  delimiter = ((type === 'rem') && (subject))? ': ' : '';
+
+  return (type + ' ' + scope + delimiter + subject);
+}
 
 function concat(string, count) {
 
