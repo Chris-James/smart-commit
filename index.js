@@ -10,7 +10,7 @@ var log = new Log('info');
 
 module.exports = {
   trim: trim,
-  buildBody: buildBody,
+  formatBody: formatBody,
   lengthError: lengthError,
   calculateOverflow: calculateOverflow,
   validateLength: validateLength,
@@ -183,10 +183,10 @@ module.exports = {
   }
 }
 
-function buildBody(input) {
+function formatBody(input) {
 
   /**
-   * @function buildBody
+   * @function formatBody
    * Returns properly formatted body for commit message.
 
    * @param {String} input
@@ -259,7 +259,7 @@ function buildCommitMessage(answers) {
   var commitMessage = '';
 
   commitMessage += formatHeader(header);
-  commitMessage += buildBody(body);
+  commitMessage += formatBody(body);
   commitMessage += formatFooter(footer);
 
   return commitMessage;
