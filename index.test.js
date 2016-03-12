@@ -6,12 +6,12 @@ test('trim()', function(t) {
   t.true(index.trim('     test') === 'test', 'removes leading whitespace');
 });
 
-test('buildBody()', function(t) {
-  t.is(index.buildBody('This is a newline||test.'), '\n\nThis is a newline\n\ntest.', 'replaces \'|\' with \'\\n\'.');
-  t.is(index.buildBody(undefined), '', 'undefined returns empty string');
-  t.not(index.buildBody('test').slice(-1), '\n', 'does not concatenate trailing newline.');
-  t.is(index.buildBody(''), '', ' \'\' returns empty string');
-  t.is(index.buildBody(null), '', 'null returns empty string')
+test('formatBody()', function(t) {
+  t.is(index.formatBody('This is a newline||test.'), '\n\nThis is a newline\n\ntest.', 'replaces \'|\' with \'\\n\'.');
+  t.is(index.formatBody(undefined), '', 'undefined returns empty string');
+  t.not(index.formatBody('test').slice(-1), '\n', 'does not concatenate trailing newline.');
+  t.is(index.formatBody(''), '', ' \'\' returns empty string');
+  t.is(index.formatBody(null), '', 'null returns empty string')
 });
 
 test('lengthError()', function(t) {
