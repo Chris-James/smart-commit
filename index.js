@@ -249,7 +249,6 @@ function buildCommitMessage(answers) {
     break: answers.break,
     change: answers.breakingChange,
     pair: answers.pair,
-    driver: answers.driver,
     navs: answers.navs,
     close: answers.close,
     issue: answers.issue
