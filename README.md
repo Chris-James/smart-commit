@@ -43,7 +43,12 @@ Any developers (using Commitizen) that contribute to this repo will be shown the
 
 ## Commit Message Format
 
-Commits are, generally, formatted as follows:
+A commit message consists of three components:  
+- **Header** - The commit type, scope, & subject
+- **Body** - A more detailed description of the changes being committed
+- **Footer** - Breaking changes, issues closed, programming partners
+
+Commit messages are, generally, formatted as follows:
 ```
 <type> <scope>: <Subject>
 
