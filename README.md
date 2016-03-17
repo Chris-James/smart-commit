@@ -77,14 +77,14 @@ It _must_ be less than 69 characters in length.
 Commit type can only be one of the following:
 
 ```
-feature:     A new feature.
-fix:         A bug fix.
-docs:        A change to documentation or comments only.
-style:       A change that does not affect the meaning of the code (white-space, alignment, etc).
-refactor:    A change that neither fixes a bug nor adds a feature.
-performance: A change that improves performance.
-test:        Add test(s).
-chore:       A change to the build process, auxiliary tools, libraries, etc.
+feature     A new feature.
+fix         A bug fix.
+docs        A change to documentation or comments only.
+style       A change that does not affect the meaning of the code (white-space, alignment, etc).
+refactor    A change that neither fixes a bug nor adds a feature.
+tune        A change that improves performance.
+test        Add test(s).
+chore       A change to the build process, auxiliary tools, libraries, etc.
 ```
 
 #### Scope
