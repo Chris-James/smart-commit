@@ -58,8 +58,8 @@ module.exports = {
           name: 'chore:    A change to the build process, auxiliary tools, libraries, etc',
           value: 'chore'
         }, {
-          name: 'perf:     A change that improves performance',
-          value: 'perf'
+          name: 'tune:     A change that improves performance',
+          value: 'tune'
         }]
       }, {
         type: 'input',
