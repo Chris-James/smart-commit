@@ -1,4 +1,5 @@
 # Smart Commit
+[![Build Status](https://travis-ci.org/Chris-James/smart-commit.svg?branch=master)](https://travis-ci.org/Chris-James/smart-commit)
 
 ## Introduction
 __Smart Commit__ is an adapter for [__Commitizen__](https://www.npmjs.com/package/commitizen).  
