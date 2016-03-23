@@ -56,6 +56,7 @@ Commit messages are, generally, formatted as follows:
 <body>
 
 BREAKING-CHANGE:
+
 <description>
 
 CLOSES: <issue>
