@@ -63,20 +63,16 @@ CLOSES: <issue>
 PAIRED-WITH: <Name>, ...
 ```
 
-A commit message consists of a **header**, **body**, and a **footer**.  
-
 ### Header
 
-The header includes the **type**, **scope**, and **subject** of the commit.
-```
-<type> <scope>: <Subject>
-```
+The header includes the commit's **type**, **scope**, and **subject**.  
+
 It _must_ be less than 69 characters in length.
 
 
 #### Type
 
-Commit type can only be one of the following:
+The type can only be one of the following:
 
 ```
 feature     A new feature.
@@ -91,12 +87,12 @@ chore       A change to the build process, auxiliary tools, libraries, etc.
 
 #### Scope
 
-The scope of a commit specifies the location or target of the changes. This could be a filename, function
+The commit's scope specifies the location of the changes. This could be a filename, function
 name, or some other identifier for the general area of the code being modified.
 
 #### Subject
 
-The subject contains a succinct description of the changes being committed.
+The commit's subject is a succinct description of the changes being committed.
 
 It should
 * Be <= 50 characters long
@@ -113,28 +109,29 @@ A subject **should not include a period (.)** at the end.
 > Imperative means "spoken or written as if giving a command or instruction".  
 >
 > A few examples:  
-> * Clean your room  
+> * Clean the garage
 > * Close the door  
 > * Take out the trash  
 >
-> A properly formed git commit subject line should always be able to complete the following sentence:  
+> A properly formed Git commit subject line should always be able to complete the following sentence:  
 >
 > If applied, this commit will _your subject here_.
 >
 >[chris.beams.io](http://chris.beams.io/posts/git-commit/)
 
 #### Example Headers
-```
-docs README.md: Add setup instructions
+`docs README.md: Add setup instructions`
 
-style userDashboard.js: Replace tabs with soft tabs (2 spaces)
+`style userDashboard.js: Replace tabs with soft tabs (2 spaces)`
 
-feat login(): Implement validation for login credentials
-```
+`feat login(): Implement validation for login credentials`
+
 ---
 ### Body
 
-The body is a detailed description of the change(s) being committed. It should:  
+The body is a detailed description of the change(s) being committed.  
+
+It should:  
 * Explain the problem that the change tries to solve (i.e., What is wrong with the current code without the change?).
 * Justify the way the change solves the problem (i.e., Why the result with the change is better).
 * List alternate solutions considered but discarded, if any.
@@ -160,14 +157,13 @@ string instead.
 ---
 ### Footer
 
-_The footer is optional._  
-
-It includes:
+The message footer includes three optional components:
 - breaking changes introduced by the commit
 - issues closed by the commit
 - pair programming partners
 
 #### Example Footer
+
 ```
 BREAKING-CHANGES:
 
