@@ -37,29 +37,26 @@ module.exports = {
         message: 'Select the type of change that you\'re committing:',
         choices: [
         {
-          name: 'feat:     A new feature',
-          value: 'feat'
+          name: 'task:     A new feature',
+          value: 'task'
         }, {
-          name: 'fix:      A bug fix',
-          value: 'fix'
+          name: 'tend:     A bug fix',
+          value: 'tend'
         }, {
-          name: 'docs:     A change to documentation or comments only.',
-          value: 'docs'
+          name: 'text:     A change to documentation or comments',
+          value: 'text'
         }, {
-          name: 'style:    A change that does not affect the meaning of the code (white-space, alignment, etc)',
-          value: 'style'
+          name: 'tidy:     A change that does not affect the meaning of the code (white-space, alignment, etc)',
+          value: 'tidy'
         }, {
-          name: 'refactor: A change that neither fixes a bug nor adds a feature',
-          value: 'ref'
+          name: 'tune:     A refactor that neither fixes a bug nor adds a feature',
+          value: 'tune'
         }, {
-          name: 'test:     Add test(s)',
+          name: 'test:     A test(s)',
           value: 'test'
         }, {
-          name: 'chore:    A change to the build process, auxiliary tools, libraries, etc',
-          value: 'chore'
-        }, {
-          name: 'tune:     A change that improves performance',
-          value: 'tune'
+          name: 'tool:     A change to the build process, auxiliary tools, libraries, etc',
+          value: 'tool'
         }]
       }, {
         type: 'input',
