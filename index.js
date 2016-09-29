@@ -57,6 +57,9 @@ module.exports = {
         }, {
           name: 'tool:     A change to the build process, auxiliary tools, libraries, etc',
           value: 'tool'
+        }, {
+          name: 'trim:     A change that removes a file, directory, function, code block, etc',
+          value: 'trim'
         }]
       }, {
         type: 'input',
